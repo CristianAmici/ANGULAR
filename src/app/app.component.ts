@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'APRENDE A IMAGINAR: la Mejor biblioteca digital';
+  title = 'La Mejor biblioteca digital';
 }

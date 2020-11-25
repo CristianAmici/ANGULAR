@@ -7,11 +7,12 @@
             <th scope="col">autor</th>
             <th scope="col">descargas</th>
             <th scope="col">Precio</th>
+            <th>Calificacion</th>
         </tr>
     </thead>
     <tbody>
         <tr *ngFor="let libro of libros" [ngClass]="{'muyLeido': libro.descargas>1000}">
-            <td><img [src]="libro.img" [alt]="libro.nombre"></td>
+            <td><img  [src]="libro.img" [alt]="libro.nombre" class="imgLista"></td>
             <td>{{libro.nombre}}</td>
             <td>{{libro.autor}}</td>
             <td>{{libro.precio |currency}}</td>
@@ -22,6 +23,9 @@
                 <ng-template #elseTemplate>
                     {{libro.descargas}}
                 </ng-template>
+            </td>
+            <td><button type="button" class="btn btn-danger btn-sm" (click)="BajarCalificacion(libro)">-</button>{{libro.calificacion}}
+                <button type="button" class="btn btn-success btn-sm"(click)="SubirCalificacion(libro)">+</button>
             </td>
         </tr>
     </tbody>

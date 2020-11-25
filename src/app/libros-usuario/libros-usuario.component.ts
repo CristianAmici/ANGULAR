@@ -11,7 +11,6 @@ export class LibrosUsuarioComponent implements OnInit {
     "nombre": "Pedro",
     "numeroUsuario": 1,
     "prestado": 234,
-    "adeudaLibro": false
   }
 
   

@@ -30,7 +30,7 @@ export class InputTextNumberComponent implements OnInit {
   BajarCalificacion(): void{
     if(this.calificacion>0){
     this.calificacion--;
-   
+    this.calificacionChange.emit(this.calificacion);
 
     }
     else{

@@ -5,17 +5,17 @@
             <th scope="col">Tapa</th>
             <th scope="col">nombre</th>
             <th scope="col">autor</th>
+            <th scope="col">Promedio</th>
             <th scope="col">descargas</th>
-            <th scope="col">Precio</th>
             <th>Calificacion</th>
         </tr>
     </thead>
     <tbody>
         <tr *ngFor="let libro of libros" [ngClass]="{'muyLeido': libro.descargas>1000}">
-            <td><img  [src]="libro.img" [alt]="libro.nombre" class="imgLista"></td>
+            <td><img [src]="libro.img" [alt]="libro.nombre" class="imgLista"></td>
             <td>{{libro.nombre}}</td>
             <td>{{libro.autor}}</td>
-            <td>{{libro.precio |currency}}</td>
+            <td>{{libro.promedio}}</td>
             <td>
                 <ng-container *ngIf="libro.descargas>1000; else elseTemplate">
                     <span class="badge badge-danger">{{libro.descargas}}</span>
@@ -24,9 +24,12 @@
                     {{libro.descargas}}
                 </ng-template>
             </td>
-            <td><button type="button" class="btn btn-danger btn-sm" (click)="BajarCalificacion(libro)">-</button>{{libro.calificacion}}
-                <button type="button" class="btn btn-success btn-sm"(click)="SubirCalificacion(libro)">+</button>
+            <td>
+              <app-input-text-number [(calificacion)]= "libro.calificacion" (mejor)= "mejor($event)" (peor)="peor($event)"></app-input-text-number>
+              <button class="btn btn-primary" (click)= addToValoracion(libro)>Valorar</button><button class="btn" (click)= addToValoracion(libro)>Leido</button>
             </td>
+            <td>{{libro.calificacion}}</td>
+          
         </tr>
     </tbody>
 </table>

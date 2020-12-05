@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { DepositoLibrosService } from '../deposito-libros.service';
+import { MiValoracionService } from '../mi-valoracion.service';
 import { Libro } from './libro';
 
 @Component({
@@ -11,7 +13,7 @@ export class ListaLibrosComponent implements OnInit {
   libros: Libro[] =[{
     nombre: "El libro negro de la nueva izquierda",
     autor: "Laje Agustin y Marquez Nicolas",
-    precio: 1400,
+    promedio: 10,
     descargas: 234,
     img: "../../assets/img/ElLibroNegroDeLaNuevaIzquierda.jpeg",
     calificacion: 0
@@ -19,7 +21,7 @@ export class ListaLibrosComponent implements OnInit {
   {
     nombre: "EL manual del perfecto idiota latinoamericano",
     autor: "Álvaro Vargas Llosa",
-    precio: 2000,
+    promedio: 10,
     descargas: 1200,
     img: "../../assets/img/Manual.jpeg",
     calificacion: 0
@@ -27,27 +29,32 @@ export class ListaLibrosComponent implements OnInit {
   {
     nombre: "4000 años de control de precios y salarios",
     autor: "Robert Schuettinger",
-    precio: 3500,
+    promedio: 10,
     descargas: 2312312,
     img: "../../assets/img/4000años.jpeg",
     calificacion: 0
   },
 ];
 
-
-  constructor() { }
+  constructor( private valoracion : MiValoracionService,
+    private depositoService: DepositoLibrosService) {
+   }
 
   ngOnInit(): void {
   }
-  SubirCalificacion(libro: Libro): void{
-    libro.calificacion++;
-
-  }
-  BajarCalificacion(libro: Libro): void{
-    if(libro.calificacion>0)
-    libro.calificacion--;
-
+  
+  addToValoracion(libro){
+    libro.promedio=(libro.promedio + libro.calificacion)/2;
+    this.valoracion.agregarAValoracion(libro);
+    console.log(libro.promedio);
   }
 
+  mejor(m: String){
+    alert(m);
+  }
+
+  peor(m: String){
+    alert(m);
+  }
 
 }

@@ -4,7 +4,7 @@ export interface Libro {
         autor: String;
         descargas: Number;
         img: String;
-        precio: Number;
+        promedio: Number;
         calificacion: Number;
       
 }

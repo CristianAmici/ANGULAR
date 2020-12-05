@@ -1,0 +1,12 @@
+<div class="input-group">
+    <div class="input-group-prepend"><button type="button" class="btn btn-danger btn-sm"
+            (click)="BajarCalificacion()">-</button>
+    </div>
+    <input type="text"  [(ngModel)]="promedio"  [(ngModel)]="calificacion" (click)="cambioDeCalificacion($event)">
+    <div class="input-group-append"><button type="button" class="btn btn-success btn-sm"
+            (click)="SubirCalificacion()">+</button>
+    </div>
+    <div>
+            <input type="hidden" value="555312">
+    </div>
+</div>

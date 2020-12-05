@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import { Libro } from '../lista-libros/libro';
+import { MiValoracionService } from '../mi-valoracion.service';
 
 @Component({
   selector: 'app-libros-usuario',
@@ -8,15 +11,17 @@ import { Component, OnInit } from '@angular/core';
 export class LibrosUsuarioComponent implements OnInit {
 
   usuario1= {
-    "nombre": "Pedro",
-    "numeroUsuario": 1,
-    "prestado": 234,
+    "nombre": "Pedro"
   }
 
+    misLibros$:Observable<Libro[]>;
+  constructor(private valoracion: MiValoracionService) { 
+
+    this.misLibros$ = valoracion.misLibros.asObservable();
+    
+  }
   
-  constructor() { }
-
+  
   ngOnInit(): void {
-  }
-
+  }   
 }

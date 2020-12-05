@@ -19,7 +19,7 @@ export class ListaLibrosComponent implements OnInit {
     calificacion: 0
   },
   {
-    nombre: "EL manual del perfecto idiota latinoamericano",
+    nombre: "EL manual del perfecto  latinoamericano",
     autor: "Álvaro Vargas Llosa",
     promedio: 10,
     descargas: 1200,
@@ -47,6 +47,7 @@ export class ListaLibrosComponent implements OnInit {
     libro.promedio=(libro.promedio + libro.calificacion)/2;
     this.valoracion.agregarAValoracion(libro);
     console.log(libro.promedio);
+    
   }
 
   mejor(m: String){
